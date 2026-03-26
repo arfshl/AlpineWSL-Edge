@@ -3,8 +3,14 @@ name: Build Zip CI
 on:
   push:
     branches: [ 'main' ]
+    paths:
+      - 'src_x64/**'
+      - 'src_arm64/**'
   pull_request: 
     branches: [ 'main' ]
+    paths:
+      - 'src_x64/**'
+      - 'src_arm64/**'
 
 jobs:
   Build:
