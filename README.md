@@ -85,7 +85,7 @@ $ make
 
 with flags:
 ```
-$ make ARCH=arm64 OUT_ZIP=Alpine_arm64.zip
+$ make ARCH=arm64 OUT_ZIP=Alpine-Edge_arm64.zip
 ```
 
 ### Basic Params
