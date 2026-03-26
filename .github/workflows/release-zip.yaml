@@ -1,5 +1,8 @@
 name: Release Zip CI
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   push:
@@ -69,53 +72,13 @@ jobs:
       uses: actions/download-artifact@main
       with:
         name: Alpine_arm64.zip.sha256
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push to Release
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ github.ref_name }}
-        release_name: Release ${{ github.ref_name }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset x64
-      id: upload-release-asset-x64 
-      uses: actions/upload-release-asset@main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Alpine.zip
-        asset_name: Alpine.zip
-        asset_content_type: application/zip
-    - name: Upload Release Asset SHA256 Checksum x64
-      id: upload-release-asset-sha256-x64
-      uses: actions/upload-release-asset@main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Alpine.zip.sha256
-        asset_name: Alpine.zip.sha256
-        asset_content_type: text/plain
-    - name: Upload Release Asset arm64
-      id: upload-release-asset-arm64
-      uses: actions/upload-release-asset@main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Alpine_arm64.zip
-        asset_name: Alpine_arm64.zip
-        asset_content_type: application/zip
-    - name: Upload Release Asset SHA256 Checksum arm64
-      id: upload-release-asset-sha256-arm64
-      uses: actions/upload-release-asset@main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Alpine_arm64.zip.sha256
-        asset_name: Alpine_arm64.zip.sha256
-        asset_content_type: text/plain
+        name: Release ${{ github.ref_name }}
+        files: |
+          Alpine*.zip*
+        preserve_order: true
+        make_latest: true
