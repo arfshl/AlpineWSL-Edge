@@ -101,7 +101,7 @@ $ make ARCH=arm64 OUT_ZIP=Alpine-Edge_arm64.zip
 
 ### Other WSL distributions
 
-[![VoidWSL](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=voidwsl&theme=transparent)](https://https://github.com/arfshl/voidwsl)
+[![VoidWSL](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=voidwsl&theme=transparent)](https://github.com/arfshl/voidwsl)
 [![ubuntu-latest-WSL](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=ubuntu-latest-wsl&theme=transparent)](https://github.com/arfshl/ubuntu-latest-wsl)
 [![debianwsl](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=debianwsl&theme=transparent)](https://github.com/arfshl/debianwsl)
 [![devuanwsl](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=devuanwsl&theme=transparent)](https://github.com/arfshl/devuanwsl)
