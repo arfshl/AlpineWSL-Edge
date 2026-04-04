@@ -98,3 +98,11 @@ $ make ARCH=arm64 OUT_ZIP=Alpine-Edge_arm64.zip
 |  DLR_FLAGS  |  downloader flags  | -L |
 |  BASE_URL  |  base rootfs url  | https:~ |
 |  ROOTFS_TARBALL_CKSM_URL  |  sha-sum for the base rootfs tarball  |  https:~ |
+
+### Other WSL distributions
+
+![VoidWSL](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=voidwsl&theme=transparent)
+![ubuntu-latest-WSL](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=ubuntu-latest-wsl&theme=transparent)
+![debianwsl](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=debianwsl&theme=transparent)
+![devuanwsl](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=devuanwsl&theme=transparent)
+![trisquelwsl](https://github-readme-stats-fast.vercel.app/api/pin/?username=arfshl&repo=trisquelwsl&theme=transparent)
