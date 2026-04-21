@@ -35,7 +35,7 @@ sudo echo 'nameserver 1.1.1.1' >> ./alpinewsl/etc/resolv.conf
 
 sudo chroot ./alpinewsl apk update
 sudo chroot ./alpinewsl apk upgrade
-sudo chroot ./alpinewsl apk add bash sudo
+sudo chroot ./alpinewsl apk add bash sudo shadow
 EOF
 
 cd ./alpinewsl
