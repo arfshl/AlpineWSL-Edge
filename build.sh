@@ -37,4 +37,4 @@ EOF
 
 cd ./alpinewsl
 sudo tar --numeric-owner --absolute-names -c  * | gzip --best > ../install.tar.gz
-mv install.tar.gz alpine-wsl-edge.wsl
+mv ../install.tar.gz ../alpine-wsl-edge.wsl
