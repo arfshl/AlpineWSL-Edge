@@ -16,9 +16,9 @@ echo "ARCH=$ARCH" >> "$GITHUB_ENV"
 
 
 # start build
-curl -L "https://dl-cdn.alpinelinux.org/alpine/edge/releases/$ARCH/alpine-minirootfs-$RELEASE-$ARCH.tar.gz" -o alpine-minirootfs-$RELEASE-$ARCH.tar.gz
+curl -LO "https://dl-cdn.alpinelinux.org/alpine/edge/releases/$ARCH/alpine-minirootfs-$RELEASE-$ARCH.tar.gz"
 mkdir -p ./alpinewsl
-tar -xzpf alpine-minirootfs-$RELEASE-$ARCH.tar.gz -C ./alpinewsl
+sudo tar -xzpf alpine-minirootfs-$RELEASE-$ARCH.tar.gz -C ./alpinewsl
 sudo cp oobe.sh ./alpinewsl/etc/oobe.sh
 sudo cp wsl-distribution.conf ./alpinewsl/etc/wsl-distribution.conf
 mkdir -p ./alpinewsl/usr/lib/wsl/
