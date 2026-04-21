@@ -30,13 +30,5 @@ while true; do
 done
 
 cat > /etc/sudoers.d/wsluser << EOF
-# Ensure the WSL initial user can use sudo without a password.	
-#
-# Since the user is in the wheel group, this file can be removed
-# if you wish to require a password for sudo. Be sure to set a
-# user password before doing so with 'sudo passwd $username'!
-%wheel ALL=(ALL) NOPASSWD: ALL
+%wheel ALL=(ALL:ALL) ALL
 EOF
-
-echo 'Your user has been created, is included in the wheel group, and can use sudo without a password.'	
-echo "To set a password for your user, run 'sudo passwd $username'"
