@@ -22,7 +22,7 @@ sudo tar -xzpf alpine-minirootfs-$RELEASE-$ARCH.tar.gz -C ./alpinewsl
 sudo cp ./oobe.sh ./alpinewsl/etc/oobe.sh
 sudo cp ./wsl-distribution.conf ./alpinewsl/etc/wsl-distribution.conf
 sudo mkdir -p ./alpinewsl/usr/lib/wsl/
-#sudo curl -L https://raw.githubusercontent.com/yuk7/wsldl/refs/heads/main/res/Alpine/icon.ico --output-dir ./alpinewsl/usr/lib/wsl
+sudo curl -L https://raw.githubusercontent.com/yuk7/wsldl/refs/heads/main/res/Alpine/icon.ico --output ./alpinewsl/usr/lib/wsl/icon.ico
 
 cat <<-EOF | sudo unshare -mpf bash -e -
 sudo mount --bind /dev ./alpinewsl/dev
@@ -30,8 +30,8 @@ sudo mount --bind /proc ./alpinewsl/proc
 sudo mount --bind /sys ./alpinewsl/sys
 sudo echo 'nameserver 1.1.1.1' >> ./alpinewsl/etc/resolv.conf
 
-sudo chroot ./alpinewsl "apk update && apk upgrade"
-sudo chroot ./alpinewsl apk add bash sudo
+chroot ./alpinewsl "apk update && apk upgrade"
+chroot ./alpinewsl apk add bash sudo
 EOF
 
 cd ./alpinewsl
