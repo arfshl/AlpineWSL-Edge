@@ -1,9 +1,9 @@
 # Alpine WSL
 Alpine Linux on WSL
 
-![screenshot](https://github.com/arfshl/alpine-wsl/raw/main/image.png)
-
 [![Build](https://github.com/arfshl/alpine-wsl/actions/workflows/build.yml/badge.svg)](https://github.com/arfshl/alpine-wsl/actions/workflows/build.yml)
+
+![screenshot](https://github.com/arfshl/alpine-wsl/raw/main/image.png)
 
 ### [Download](https://github.com/arfshl/alpine-wsl/releases)
 
