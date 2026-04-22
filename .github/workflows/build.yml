@@ -1,0 +1,81 @@
+name: "Build"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+  push:
+    branches:
+      - 'main'
+    paths:
+      - "build-*.sh"
+      - ".github/workflows/*.yml"
+      - "wslconf/*"
+
+permissions:
+  contents: write  
+
+jobs:
+  build-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: start build
+        run: |
+          bash build-stable.sh
+          bash build-edge.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: x86_64
+          path: ./*.wsl
+
+  build-aarch64:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: start build
+        run: |
+          bash build-stable.sh
+          bash build-edge.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: aarch64
+          path: ./*.wsl
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [build-x86_64, build-aarch64]
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+
+      - name: Release stable
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ env.RELEASE }}
+          name: ${{ env.RELEASE }}
+          files: |
+            alpine-stable*.wsl
+          preserve_order: true
+          make_latest: true
+
+      - name: Release edge
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ env.RELEASE_EDGE }}
+          name: ${{ env.RELEASE_EDGE }}
+          files: |
+            alpine-edge*.wsl
+          preserve_order: true
+          make_latest: false
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
