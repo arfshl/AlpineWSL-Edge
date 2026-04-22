@@ -62,9 +62,8 @@ jobs:
 
       - name: unzip artifact
         run: |
-          for file in *.zip; do
-            unzip "$file" -d "${file%.zip}"
-          done
+          unzip x86_64.zip -d ./
+          unzip aarch64.zip -d ./
 
       - name: Release stable
         uses: softprops/action-gh-release@v3
