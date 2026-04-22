@@ -25,7 +25,7 @@ sudo chmod +x ./alpinewsl/etc/oobe.sh
 sudo cp ./wslconf/wsl-distribution-stable.conf ./alpinewsl/etc/wsl-distribution.conf
 sudo chmod 644 ./alpinewsl/etc/wsl-distribution.conf
 sudo mkdir -p ./alpinewsl/usr/lib/wsl/
-sudo curl -L https://raw.githubusercontent.com/yuk7/wsldl/refs/heads/main/res/Alpine/icon.ico --output ./alpinewsl/usr/lib/wsl/icon.ico
+sudo cp ./wslconf/icon.ico ./alpinewsl/usr/lib/wsl/icon.ico
 
 cat <<-EOF | sudo unshare -mpf bash -e -
 sudo mount --bind /dev ./alpinewsl/dev

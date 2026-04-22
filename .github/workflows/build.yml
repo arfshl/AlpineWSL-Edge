@@ -35,6 +35,7 @@ jobs:
         with:
           name: x86_64
           path: ./*.wsl
+          archive: false
 
   build-aarch64:
     runs-on: ubuntu-24.04-arm
@@ -52,6 +53,7 @@ jobs:
         with:
           name: aarch64
           path: ./*.wsl
+          archive: false
 
   release:
     runs-on: ubuntu-latest
