@@ -35,7 +35,6 @@ jobs:
         with:
           name: x86_64
           path: ./*.wsl
-          archive: false
 
   build-aarch64:
     runs-on: ubuntu-24.04-arm
@@ -53,7 +52,6 @@ jobs:
         with:
           name: aarch64
           path: ./*.wsl
-          archive: false
 
   release:
     runs-on: ubuntu-latest
@@ -62,11 +60,17 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v8
 
+      - name: unzip artifact
+        run: |
+          for file in *.zip; do
+            unzip "$file" -d "${file%.zip}"
+          done
+
       - name: Release stable
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.build-x86_64.outputs.RELEASE }}
-          name: ${{ needs.build-x86_64.outputs.RELEASE }}
+          name: stable ${{ needs.build-x86_64.outputs.RELEASE }}
           files: |
             alpine-stable*.wsl
           preserve_order: true
@@ -76,7 +80,7 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.build-x86_64.outputs.RELEASE_EDGE }}
-          name: ${{ needs.build-x86_64.outputs.RELEASE_EDGE }}
+          name: edge ${{ needs.build-x86_64.outputs.RELEASE_EDGE }}
           files: |
             alpine-edge*.wsl
           preserve_order: true
